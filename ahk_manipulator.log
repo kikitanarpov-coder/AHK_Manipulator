@@ -1,0 +1,40 @@
+2026-02-18 23:28:57 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:28:57 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:29:57 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:29:57 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:33:56 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:33:56 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:35:32 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:35:32 | INFO | ui.recording_manager | Recording stopped, events=37
+2026-02-18 23:38:02 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:38:02 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:39:22 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:39:22 | INFO | ui.recording_manager | Recording stopped, events=41
+2026-02-18 23:47:54 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:47:54 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:49:06 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:49:06 | INFO | ui.recording_manager | Recording stopped, events=29
+2026-02-18 23:51:25 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:51:25 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:52:00 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:52:01 | INFO | ui.recording_manager | Recording stopped, events=37
+2026-02-18 23:55:17 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:55:17 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:55:31 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:55:31 | INFO | ui.recording_manager | Recording stopped, events=19
+2026-02-18 23:56:45 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:56:45 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:57:03 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:57:03 | INFO | ui.recording_manager | Recording stopped, events=59
+2026-02-18 23:58:40 | INFO | ui.recording_manager | Recording start requested
+2026-02-18 23:58:40 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-18 23:58:57 | INFO | ui.recording_manager | Recording stop requested
+2026-02-18 23:58:57 | INFO | ui.recording_manager | Recording stopped, events=35
+2026-02-19 00:01:07 | INFO | ui.recording_manager | Recording start requested
+2026-02-19 00:01:07 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-19 00:01:25 | INFO | ui.recording_manager | Recording stop requested
+2026-02-19 00:01:25 | INFO | ui.recording_manager | Recording stopped, events=44
+2026-02-19 00:02:37 | INFO | ui.recording_manager | Recording start requested
+2026-02-19 00:02:37 | INFO | ui.recording_manager | Recording listener thread started
+2026-02-19 00:03:02 | INFO | ui.recording_manager | Recording stop requested
+2026-02-19 00:03:03 | INFO | ui.recording_manager | Recording stopped, events=117
