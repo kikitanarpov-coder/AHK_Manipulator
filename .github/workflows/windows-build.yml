@@ -29,10 +29,36 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Run tests + build + smoke check
+      - name: Run tests
         shell: pwsh
         run: |
-          powershell -ExecutionPolicy Bypass -File scripts/release_check_windows.ps1
+          python -m unittest -q tests/test_backend.py tests/test_regressions.py tests/test_all_actions_emulation.py tests/test_stability_failures.py
+
+      - name: Build Windows EXE
+        shell: pwsh
+        run: |
+          pyinstaller --clean --noconfirm build/windows.spec
+
+      - name: Resolve artifact path
+        id: resolve_artifact
+        shell: pwsh
+        run: |
+          $candidates = @(
+            "dist/AHKManipulator.exe",
+            "dist/AHKManipulator/AHKManipulator.exe"
+          )
+          $artifact = $candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $artifact) {
+            Write-Host "Dist contents:" -ForegroundColor Yellow
+            if (Test-Path dist) { Get-ChildItem -Recurse dist | ForEach-Object { Write-Host $_.FullName } }
+            throw "Build output not found in expected locations"
+          }
+          "artifact_path=$artifact" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Smoke check
+        shell: pwsh
+        run: |
+          python scripts/release_smoke_check.py --target windows --artifact "${{ steps.resolve_artifact.outputs.artifact_path }}"
 
       - name: Show dist layout
         if: always()
@@ -48,9 +74,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: AHKManipulator-windows-exe
-          path: |
-            dist/AHKManipulator.exe
-            dist/AHKManipulator/AHKManipulator.exe
+          path: ${{ steps.resolve_artifact.outputs.artifact_path }}
           if-no-files-found: error
 
       - name: Upload build logs

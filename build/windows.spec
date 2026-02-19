@@ -1,22 +1,31 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 from pathlib import Path
-from PyInstaller.utils.hooks import collect_submodules
 
 spec_path = Path(globals().get("__file__", globals().get("SPEC", "build/windows.spec"))).resolve()
 PROJECT_ROOT = spec_path.parent.parent
 MAIN_SCRIPT = str(PROJECT_ROOT / "main.py")
 
-hiddenimports = []
-hiddenimports += collect_submodules("PyQt6")
-hiddenimports += collect_submodules("cv2")
-hiddenimports += ["mss", "pynput", "openpyxl", "xlrd"]
+hiddenimports = [
+    "PyQt6.QtCore",
+    "PyQt6.QtGui",
+    "PyQt6.QtWidgets",
+    "cv2",
+    "numpy",
+    "mss",
+    "pynput",
+    "openpyxl",
+    "xlrd",
+]
+datas = [
+    (str(PROJECT_ROOT / "ui" / "recording_listener_worker.py"), "ui"),
+]
 
 a = Analysis(
     [MAIN_SCRIPT],
     pathex=[str(PROJECT_ROOT)],
     binaries=[],
-    datas=[],
+    datas=datas,
     hiddenimports=hiddenimports,
     hookspath=[],
     hooksconfig={},
