@@ -34,11 +34,23 @@ jobs:
         run: |
           powershell -ExecutionPolicy Bypass -File scripts/release_check_windows.ps1
 
+      - name: Show dist layout
+        if: always()
+        shell: pwsh
+        run: |
+          if (Test-Path dist) {
+            Get-ChildItem -Recurse dist | ForEach-Object { Write-Host $_.FullName }
+          } else {
+            Write-Host "dist folder not found"
+          }
+
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4
         with:
           name: AHKManipulator-windows-exe
-          path: dist/AHKManipulator.exe
+          path: |
+            dist/AHKManipulator.exe
+            dist/AHKManipulator/AHKManipulator.exe
           if-no-files-found: error
 
       - name: Upload build logs
