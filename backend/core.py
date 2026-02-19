@@ -11,6 +11,7 @@ from datetime import datetime
 import asyncio
 import json
 import os
+import uuid
 from pathlib import Path
 
 
@@ -836,9 +837,13 @@ class BackendApplication:
         self.importer = self._importer_class()
         self._ahk_runner = None
 
+    @staticmethod
+    def _new_id(prefix: str) -> str:
+        return f"{prefix}_{uuid.uuid4().hex}"
+
     def create_board(self, name: str) -> TaskBoard:
         """Создать доску"""
-        board = TaskBoard(id=f"board_{datetime.now().timestamp()}", name=name)
+        board = TaskBoard(id=self._new_id("board"), name=name)
         self.boards.append(board)
         self.current_board = board
         return board
@@ -848,7 +853,7 @@ class BackendApplication:
         if not self.current_board:
             self.create_board("Без названия")
 
-        row = TaskRow(id=f"row_{datetime.now().timestamp()}", name=name)
+        row = TaskRow(id=self._new_id("row"), name=name)
         self.current_board.add_row(row)
         return row
 
