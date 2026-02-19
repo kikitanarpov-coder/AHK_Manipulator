@@ -3,7 +3,8 @@
 from pathlib import Path
 from PyInstaller.utils.hooks import collect_submodules
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+spec_path = Path(globals().get("__file__", globals().get("SPEC", "build/windows.spec"))).resolve()
+PROJECT_ROOT = spec_path.parent.parent
 MAIN_SCRIPT = str(PROJECT_ROOT / "main.py")
 
 hiddenimports = []
